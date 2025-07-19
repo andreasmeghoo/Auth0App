@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Authentication.OpenIdConnect
+@using Microsoft.AspNetCore.Components.Authorization
+@inject NavigationManager Navigation
+@inject IHttpContextAccessor HttpContextAccessor
+
+<AuthorizeView>
+    <Authorized>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/login">
+                Hello, @context.User.Identity?.Name!
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/logout">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Log Out
+            </NavLink>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="nav-item px-3">
+        <NavLink class="nav-link" href="/login">
+            <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Login
+        </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/signup">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Sign Up
+            </NavLink>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

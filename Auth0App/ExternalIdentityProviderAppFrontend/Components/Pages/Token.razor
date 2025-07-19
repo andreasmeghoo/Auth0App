@@ -1,0 +1,25 @@
+﻿@page "/token"
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h3>Your Access Token</h3>
+
+@if (token != null)
+{
+    <textarea rows="10" cols="80">@token</textarea>
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code {
+    private string? token;
+
+    protected override async Task OnInitializedAsync()
+    {
+        token = await HttpContextAccessor.HttpContext?.GetTokenAsync("access_token");
+    }
+}
