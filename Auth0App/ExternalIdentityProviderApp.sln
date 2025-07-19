@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalIdentityProviderApp", "Auth0App\ExternalIdentityProviderApp.csproj", "{3DAB9776-38CC-4830-864E-6C2D0B1AAF58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalIdentityProviderAppFrontend", "ExternalIdentityProviderAppFrontend\ExternalIdentityProviderAppFrontend.csproj", "{6C67D5DA-1829-432A-8F0D-01E72C10AF2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3DAB9776-38CC-4830-864E-6C2D0B1AAF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DAB9776-38CC-4830-864E-6C2D0B1AAF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DAB9776-38CC-4830-864E-6C2D0B1AAF58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C67D5DA-1829-432A-8F0D-01E72C10AF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C67D5DA-1829-432A-8F0D-01E72C10AF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C67D5DA-1829-432A-8F0D-01E72C10AF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C67D5DA-1829-432A-8F0D-01E72C10AF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
