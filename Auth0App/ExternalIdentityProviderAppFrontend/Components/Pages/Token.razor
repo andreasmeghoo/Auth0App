@@ -1,14 +1,17 @@
 ﻿@page "/token"
-@using Microsoft.AspNetCore.Authentication
+
 @using Microsoft.AspNetCore.Authorization
-@attribute [Authorize]
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authentication
 @inject IHttpContextAccessor HttpContextAccessor
+@attribute [Authorize]
 
 <h3>Your Access Token</h3>
 
-@if (token != null)
+@if (accessToken != null)
 {
-    <textarea rows="10" cols="80">@token</textarea>
+    <textarea rows="10" cols="80">@accessToken</textarea>
 }
 else
 {
@@ -16,10 +19,13 @@ else
 }
 
 @code {
-    private string? token;
+    private string? accessToken;
 
     protected override async Task OnInitializedAsync()
     {
-        token = await HttpContextAccessor.HttpContext?.GetTokenAsync("access_token");
+        var authResult = await HttpContextAccessor.HttpContext.AuthenticateAsync();
+        accessToken = authResult.Properties?.GetTokenValue("access_token");
     }
 }
+
+

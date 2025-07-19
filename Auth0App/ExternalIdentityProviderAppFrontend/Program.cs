@@ -29,6 +29,7 @@ builder.Services.AddAuthentication(options =>
         options.Scope.Add("openid");
         options.Scope.Add("profile");
         options.Scope.Add("email");
+        options.Scope.Add("read:weather");
 
         options.CallbackPath = new PathString("/signin-auth0");
         
@@ -44,6 +45,12 @@ builder.Services.AddAuthentication(options =>
 
         options.Events = new OpenIdConnectEvents
         {
+            OnRedirectToIdentityProvider = context =>
+            {
+                context.ProtocolMessage.SetParameter("audience", builder.Configuration["Auth0:Audience"]);
+                return Task.CompletedTask;
+            }
+            ,
             OnRedirectToIdentityProviderForSignOut = context =>
             {
                 var logoutUri = $"https://{builder.Configuration["Auth0:Domain"]}/v2/logout?client_id={options.ClientId}";
@@ -59,6 +66,8 @@ builder.Services.AddAuthentication(options =>
 
                 return Task.CompletedTask;
             }
+
+
         };
     });
 builder.Services.AddHttpContextAccessor();
